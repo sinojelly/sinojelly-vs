@@ -1,16 +1,9 @@
 <VSContent xmlns="http://schemas.microsoft.com/developer/vscontent/2005">
     <Content>
         <FileName>sinojelly.vsmacros</FileName>
-        <DisplayName>sinojelly FileOperation Macros</DisplayName>
+        <DisplayName>sinojelly's Visual Studio Macros</DisplayName>
         <Description>Support Open Test file, etc.</Description>
         <FileContentType>Macro Project</FileContentType>
         <ContentVersion>1.1</ContentVersion>
     </Content>
-    <Content>
-        <FileName>AllHotKeys.vsmacros</FileName>
-        <DisplayName>AllHotKeys Macros</DisplayName>
-        <Description>Write all hot keys in Visual Studio to html.</Description>
-        <FileContentType>Macro Project</FileContentType>
-        <ContentVersion>1.0</ContentVersion>
-    </Content>	
 </VSContent>
