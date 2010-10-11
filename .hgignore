@@ -1,5 +1,4 @@
 syntax: regexp
-#\.hgignore$
 ^trunk/TesgngppAddin/TestngppAddin.suo$
 ^trunk/TesgngppAddin/TestResults/
 ^trunk/TesgngppAddin/TestProject/bin/
