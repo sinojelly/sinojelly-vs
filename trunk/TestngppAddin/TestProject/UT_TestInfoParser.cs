@@ -13,6 +13,7 @@ namespace TestProject1
     {
         TestInfoParser parser = new TestInfoParser();
 
+#if false
         [TestMethod]
         public void mem_stream_parser()
         {
@@ -37,6 +38,38 @@ namespace TestProject1
 #endif
             FileStream stream = new FileStream("just_test.txt", FileMode.Open);
             Assert.AreEqual(3, parser.parse(stream));
+        }
+#endif
+
+        [TestMethod]
+        public void simple_test_file()
+        {
+            string fileContent
+                = "FIXTURE(FixtureName)\r\n"
+                + "{"
+                + "    // @test(id=first-id)"
+                + "    TEST(测试用例1)\r\n"
+                + "    {\r\n"
+                + "    }\r\n"
+                + "    \r\n"
+                + "    // @test(id=second-id, depends=first-id)"
+                + "    TEST(测试用例2)\r\n"
+                + "    {\r\n"
+                + "    }\r\n"
+                + "};";
+            
+            MemoryStream stream = new MemoryStream(System.Text.ASCIIEncoding.ASCII.GetBytes(multiLines));
+            
+            Assert.AreEqual(true, parser.parse(stream));
+
+            Assert.AreEqual("FixtureName", parser.Fixtures[0].Name);
+            
+            Assert.AreEqual("测试用例1", parser.Fixtures[0].Tests[0].Name);            
+            Assert.AreEqual("first-id", parser.Fixtures[0].Tests[0].id);
+
+            Assert.AreEqual("测试用例2", parser.Fixtures[0].Tests[1].Name);            
+            Assert.AreEqual("second-id", parser.Fixtures[0].Tests[1].id);
+            Assert.AreEqual("first-id", parser.Fixtures[0].Tests[1].depends);
         }
     }
 }

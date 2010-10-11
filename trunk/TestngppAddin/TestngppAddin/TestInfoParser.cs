@@ -19,7 +19,7 @@ namespace TestngppAddin
     /// </summary>
     public class TestInfoParser
     {
-        public int parse(Stream stream)
+        public bool parse(Stream stream)
         {
             int count = 0;
             string line;
@@ -31,7 +31,7 @@ namespace TestngppAddin
                     count++;
                 }
             }
-            return count;
+            return true;
         }
     }
 }

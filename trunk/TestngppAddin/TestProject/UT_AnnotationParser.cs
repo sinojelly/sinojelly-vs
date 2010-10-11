@@ -113,12 +113,13 @@ namespace TestProject1
 }
 
 /*
-  TODO: 注释解析
+  Note: 注释解析
  * D:\Projects\Google\testngpp\test-ng-pp-read-write_svn\test-ng-pp\samples\TestBar.h
- * // @fixture(tags=succ)   ？？？fixture的tags有什么用?
+ * // @fixture(tags=succ)   fixture的tags有什么用?
  * // @test(data="names")
  * // @test(id=1)
  * // @test(depends=2, tags="ft slow empty")
  * // @test(id=4, depends=3, tags="it slow")
-  TODO: #if 0或者注释掉的用例，最好能从树中过滤出来。
+  TODO: #if 0或者注释掉的用例，最好能过滤掉。
+ * 可以用一个C++有效代码提取模块，把注释、#if 0掉的代码过滤掉，然后再针对过滤后的有效代码进行处理。
  */
