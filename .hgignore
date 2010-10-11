@@ -1,0 +1,8 @@
+syntax: regexp
+#\.hgignore$
+^trunk/TesgngppAddin/TestngppAddin.suo$
+^trunk/TesgngppAddin/TestResults/
+^trunk/TesgngppAddin/TestProject/bin/
+^trunk/TesgngppAddin/TestProject/obj/
+^trunk/TesgngppAddin/TesgngppAddin/bin/
+^trunk/TesgngppAddin/TesgngppAddin/obj/
