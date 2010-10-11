@@ -2,16 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace TestProject1
+namespace TestProject
 {
     
     
     /// <summary>
-    ///This is a test class for TestNameParserTest and is intended
-    ///to contain all TestNameParserTest Unit Tests
+    ///This is a test class for FixtureNameParserTest and is intended
+    ///to contain all FixtureNameParserTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class UT_TestNameParser
+    public class UT_FixtureNameParser
     {
 
 
@@ -63,44 +63,27 @@ namespace TestProject1
         //
         #endregion
 
+        FixtureNameParser parser = new FixtureNameParser();
 
-        TestNameParser target = new TestNameParser(); 
-
+        /// <summary>
+        ///A test for parse
+        ///</summary>
         [TestMethod()]
-        public void line_is_empty()
-        {            
-            Assert.AreEqual(string.Empty, target.parse(string.Empty));
+        public void only_fixture_class()
+        {
+            Assert.AreEqual("TestClass", parser.parse("FIXTURE(TestClass)"));
         }
 
         [TestMethod()]
-        public void line_is_null_string()
+        public void with_description()
         {
-            Assert.AreEqual(string.Empty, target.parse(""));
+            Assert.AreEqual("TestClass[这是描述]", parser.parse("FIXTURE(TestClass , 这是描述)"));
         }
 
         [TestMethod()]
-        public void line_is_english_name_test()
+        public void with_some_spaces()
         {
-            string name = "english test name";
-            Assert.AreEqual(name, target.parse("    TEST("+name+")"));
-        }
-
-        [TestMethod()]
-        public void line_is_chinese_name_test()
-        {
-            string name = "这是一个 中文用例名";
-            Assert.AreEqual(name, target.parse("    TEST("+name+")"));
-        }
-
-        [TestMethod()]
-        public void line_is_parametered_test()
-        {
-            string name = "this is a parametered() test";
-            Assert.AreEqual(name, target.parse("    PTEST( (const char* name), "+name+")"));
+            Assert.AreEqual("TestClass[这是 描述]", parser.parse(" FIXTURE ( TestClass , 这是 描述 ) "));
         }
     }
 }
-
-/*
- TODO: PTEST要显示为多个用例，采用  用例名_Parameter(p1, p2)  的方式。(暂时不做)
- */

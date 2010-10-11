@@ -58,6 +58,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FixtureNameParser.cs" />
     <Compile Include="TestNameParser.cs" />
     <Compile Include="TestInfoParser.cs" />
     <Compile Include="CommandBarViewer.cs">

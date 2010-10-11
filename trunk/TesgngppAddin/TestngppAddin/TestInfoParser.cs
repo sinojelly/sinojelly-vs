@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace TestngppAddin
 {
@@ -18,40 +19,19 @@ namespace TestngppAddin
     /// </summary>
     public class TestInfoParser
     {
-        int parse(string input)
+        public int parse(Stream stream)
         {
-            return 0;
-        }
-
-        /// <summary>
-        /// ////////////
-        /// </summary>
-        const string testRegEx = @"(//\s*@test\((.*?)\))?\s*P?TEST\((.*?)\)";
-        Regex regex = new Regex(testRegEx);
-        MatchCollection mc;
-
-        
-
-
-        public int parse1()
-        {
-            string assist;
-            string name;
-
-            mc = regex.Matches("input");
-
-            foreach (Match m in mc)
+            int count = 0;
+            string line;
+            using (StreamReader sr = new StreamReader(stream))
             {
-                assist = m.Groups[2].Value;
-                name = m.Groups[3].Value;
-
-                Console.WriteLine(assist);
-                Console.WriteLine(name);
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                    count++;
+                }
             }
-
-            return 1;
+            return count;
         }
-        
-
     }
 }

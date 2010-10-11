@@ -63,20 +63,62 @@ namespace TestProject1
         //
         #endregion
 
+        AnnotationParser parser = new AnnotationParser();
 
         /// <summary>
         ///A test for parse
         ///</summary>
         [TestMethod()]
-        public void parseTest()
+        public void only_test_id()
         {
-/*            AnnotationParser_Accessor target = new AnnotationParser_Accessor(); // TODO: Initialize to an appropriate value
-            string line = string.Empty; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.parse(line);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");*/
+            string id = "test-id";
+            Assert.AreEqual(true, parser.parse("  // @ test ( id = "+id+" )"));
+            Assert.AreEqual(id, parser.id);
+        }
+
+        [TestMethod()]
+        public void with_id_depends_tags()
+        {
+            Assert.AreEqual(true, parser.parse("  // @ test ( id = test-id , depends = other-test , tags = \"ut it\" )"));
+            Assert.AreEqual("test-id", parser.id);
+            Assert.AreEqual("other-test", parser.depends);
+            Assert.AreEqual("\"ut it\"", parser.tags);
+        }
+
+        [TestMethod()]
+        public void with_depends_tags_id()
+        {
+            Assert.AreEqual(true, parser.parse("  // @ test ( depends = other-test , tags = \"ut it\" ,id = test-id)"));
+            Assert.AreEqual("test-id", parser.id);
+            Assert.AreEqual("other-test", parser.depends);
+            Assert.AreEqual("\"ut it\"", parser.tags);
+        }
+
+        [TestMethod()]
+        public void line_is_empty()
+        {
+            Assert.AreEqual(false, parser.parse(""));
+            Assert.AreEqual(false, parser.parse(string.Empty));
+        }
+
+        [TestMethod()]
+        public void with_data_id_depends()
+        {
+            Assert.AreEqual(true, parser.parse("  // @ test (data=\"names\", id = test-id, depends = other-test )"));
+            Assert.AreEqual("test-id", parser.id);
+            Assert.AreEqual("other-test", parser.depends);
+            Assert.AreEqual("\"names\"", parser.data);
         }
     }
 }
+
+/*
+  TODO: 注释解析
+ * D:\Projects\Google\testngpp\test-ng-pp-read-write_svn\test-ng-pp\samples\TestBar.h
+ * // @fixture(tags=succ)   ？？？fixture的tags有什么用?
+ * // @test(data="names")
+ * // @test(id=1)
+ * // @test(depends=2, tags="ft slow empty")
+ * // @test(id=4, depends=3, tags="it slow")
+  TODO: #if 0或者注释掉的用例，最好能从树中过滤出来。
+ */

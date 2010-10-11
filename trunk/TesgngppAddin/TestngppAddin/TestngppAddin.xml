@@ -21,11 +21,6 @@
             解析一个用例的信息
             </summary>
         </member>
-        <member name="F:TestngppAddin.TestInfoParser.testRegEx">
-            <summary>
-            ////////////
-            </summary>
-        </member>
         <member name="T:TestngppAddin.Connect">
             <summary>The object for implementing an Add-in.</summary>
             <seealso class='IDTExtensibility2' />
