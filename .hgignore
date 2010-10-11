@@ -1,7 +1,8 @@
 syntax: regexp
-^trunk/TesgngppAddin/TestngppAddin.suo$
-^trunk/TesgngppAddin/TestResults/
-^trunk/TesgngppAddin/TestProject/bin/
-^trunk/TesgngppAddin/TestProject/obj/
-^trunk/TesgngppAddin/TesgngppAddin/bin/
-^trunk/TesgngppAddin/TesgngppAddin/obj/
+^trunk/TestngppAddin/TestngppAddin.suo$
+^trunk/TestngppAddin/TestngppAddin/TestngppAddin.xml$
+^trunk/TestngppAddin/TestResults/
+^trunk/TestngppAddin/TestProject/bin/
+^trunk/TestngppAddin/TestProject/obj/
+^trunk/TestngppAddin/TestngppAddin/bin/
+^trunk/TestngppAddin/TestngppAddin/obj/
